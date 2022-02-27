@@ -66,10 +66,10 @@ void four::processTextMessage(const QString & message)
 {
 	if (message.section(";", 0, 0) == "connection")
 	{
-		QString hostName = message.section(";", 1, 1);
-		QString userName = message.section(";", 2, 2);
-		QString password = message.section(";", 3, 3);
-		QString dbName = message.section(";", 4, 4);
+		QString hostName	= message.section(";", 1, 1);
+		QString userName	= message.section(";", 2, 2);
+		QString password	= message.section(";", 3, 3);
+		QString dbName		= message.section(";", 4, 4);
 
 		dbInit(hostName, userName, password, dbName);
 	}
@@ -129,9 +129,9 @@ void four::issue(int value1, int value2)
 /* Recuperation of four values and send them to database */
 void four::insertValue()
 {
-	float bruteValue = AI_VReadChannel(card, 0, AD_B_10_V, &voltage);
-	float voltageValue = voltage;
-	float tempValue = (voltageValue * 51) - 73;
+	float bruteValue	= AI_VReadChannel(card, 0, AD_B_10_V, &voltage);
+	float voltageValue	= voltage;
+	float tempValue		= (voltageValue * 51) - 73;
 
 	QSqlQuery query;
 	query.prepare("INSERT INTO `four`(`bruteValue`, `tension`, `temperature`) VALUES(:bruteValue, :voltageValue, :tempValue)");
@@ -144,10 +144,10 @@ void four::insertValue()
 
 	if (query.next())
 	{
-		QString bruteValue = query.value(0).toString();
-		QString voltageValue = query.value(1).toString();
-		QString tempValue = query.value(2).toString();
-		QString date = query.value(3).toString();
+		QString bruteValue		= query.value(0).toString();
+		QString voltageValue	= query.value(1).toString();
+		QString tempValue		= query.value(2).toString();
+		QString date			= query.value(3).toString();
 
 		QString sendText = bruteValue + ";" + voltageValue + ";" + tempValue + ";" + date;
 
@@ -165,10 +165,10 @@ void four::selectValue()
 
 	while (query.next())
 	{
-		QString bruteValue = query.value(0).toString();
-		QString voltageValue = query.value(1).toString();
-		QString tempValue = query.value(2).toString();
-		QString date = query.value(3).toString();
+		QString bruteValue		= query.value(0).toString();
+		QString voltageValue	= query.value(1).toString();
+		QString tempValue		= query.value(2).toString();
+		QString date			= query.value(3).toString();
 
 		QString sendText = bruteValue + ";" + voltageValue + ";" + tempValue + ";" + date;
 
