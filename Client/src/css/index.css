@@ -7,15 +7,8 @@ body {
     padding: 1%;
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-    background-color: #202225;
-}
-
-::-webkit-scrollbar-thumb {
-    width: 10px;
-    background-color: #4b4068;
-    border: 1px solid #382f4e;
+h3 {
+    margin-left: 5%;
 }
 
 /* Set style for contenant */
@@ -44,6 +37,30 @@ body {
     background-color: #382f4ead;
 }
 
+.voltage {
+    margin-bottom: 30px;
+}
+
+.range {
+    width: 70%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.rangeVoltage {
+    width: 60%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flex
+}
+
+#rangeVoltage {
+    width: 100%;
+}
+
 form, table {
     width: 90%;
     margin-right: auto;
@@ -57,10 +74,6 @@ table {
 
 thead, tbody {
     display: block;
-}
-
-thead {
-    border-right: 10px solid #202225;
 }
 
 tbody {

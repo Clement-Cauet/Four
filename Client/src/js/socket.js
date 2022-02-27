@@ -9,18 +9,28 @@ document.getElementById('connect').addEventListener('click', function() {
     var password    = document.getElementById('password').value;
     var dbName      = document.getElementById('dbName').value;
 
-    var socket = new WebSocket("ws://"+ serverName +":1234");
+    var socket = new WebSocket("ws://"+ serverName +":3005");
 
+    var range = document.getElementById('rangeVoltage');
 
     /* WebSocket open */
     socket.onopen = function() {
         document.getElementById('connexion').hidden = true;
         document.getElementById('table').hidden = false;
 
-        var data = hostName+";"+userName+";"+password+";"+dbName;
+        var data = "connection;"+hostName+";"+userName+";"+password+";"+dbName;
         socket.send(data);
 
         console.log("Client WebSocket: Nouvelle connexion");
+    };
+
+    /* Send range value on the server */
+    range.onchange = function() {
+        var rangeValue = range.value;
+    
+        var data = "value;"+rangeValue;
+        console.log(data);
+        //socket.send(data);
     };
 
     /* WebSocket close */
