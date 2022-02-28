@@ -29,8 +29,7 @@ document.getElementById('connect').addEventListener('click', function() {
         var rangeValue = range.value;
     
         var data = "value;"+rangeValue;
-        console.log(data);
-        //socket.send(data);
+        socket.send(data);
     };
 
     /* WebSocket close */
